@@ -56,5 +56,5 @@ fi
 
 {
   [ -n "$PKGS" ] && printf '%s\n' "$PKGS" | sed 's/^/pm disable-user --user 0 /'
-  echo "pm list packages -d"
+  echo "pm list packages --user 0 -d"
 } | "$PY" -I tools/tv.py --batch

@@ -136,7 +136,7 @@ class DebloatPathsTest(unittest.TestCase):
                 f"{operation} com.example.keep_order_two",
             ])
             self.assertNotIn("wrong_tv", "\n".join(commands))
-            self.assertEqual(commands[-1], "pm list packages -d")
+            self.assertEqual(commands[-1], "pm list packages --user 0 -d")
             if script == "restore.sh":
                 self.assertIn("pm enable com.google.android.tvlauncher", commands)
 
