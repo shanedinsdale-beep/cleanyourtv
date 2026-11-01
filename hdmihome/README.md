@@ -21,7 +21,7 @@ It picks the input labelled HDMI 1 at first. If the box moves, use "Google TV is
 
 ## Install from a USB stick
 
-1. Copy `app-release.apk` to a USB stick (FAT32 or exFAT) and plug it into the TV.
+1. Copy [`app-release.apk`](app-release.apk) (in this folder) to a USB stick (FAT32 or exFAT) and plug it into the TV.
 2. Open it with a file manager on the TV. If the TV has none, install one from the Play Store
    (for example "File Commander" or "X-plore").
 3. Android asks to allow installs from that file manager: allow it

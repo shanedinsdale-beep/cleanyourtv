@@ -18,3 +18,4 @@ hdmihome/.gradle/
 hdmihome/build/
 hdmihome/app/build/
 hdmihome/local.properties
+!hdmihome/app-release.apk
