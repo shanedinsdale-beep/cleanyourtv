@@ -37,5 +37,5 @@ to remove it). Reach Settings from the HDMI Home menu: press Back during the cou
 ## Build
 
 On an x86_64 machine with JDK 17 and the Android SDK: `cd hdmihome && ./gradlew assembleRelease`.
-The APK is `app/build/outputs/apk/release/app-release.apk`. On an arm64 Pi, build in the amd64
+The APK is `app/build/outputs/apk/release/app-release.apk`; copy it over `app-release.apk` in this folder to update the committed one. On an arm64 Pi, build in the amd64
 container the same way as `streamer/build-and-install.sh`.
