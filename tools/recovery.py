@@ -95,13 +95,13 @@ def shell(dev, command):
 
 def query_packages(dev):
     installed = {line.split(":", 1)[1].strip()
-                 for line in shell(dev, "pm list packages").splitlines()
+                 for line in shell(dev, "pm list packages --user 0").splitlines()
                  if line.startswith("package:")}
     if not installed:
         raise SystemExit("the TV returned no packages, so nothing was recorded and nothing will be "
                          "disabled. Check the connection (tools/tv.py --probe) and try again.")
     disabled = {line.split(":", 1)[1].strip()
-                for line in shell(dev, "pm list packages -d").splitlines()
+                for line in shell(dev, "pm list packages --user 0 -d").splitlines()
                 if line.startswith("package:")}
     return installed, disabled
 
@@ -212,7 +212,7 @@ def restore_commands(list_path, stock, host):
                         f"--brief -a android.intent.action.MAIN -c android.intent.category.HOME "
                         f"{stock or 'com.google.android.tvlauncher'} | tail -n 1)")
         commands.extend(f"settings put global {key} 1.0" for key in SETTINGS)
-        commands.append("pm list packages -d")
+        commands.append("pm list packages --user 0 -d")
         return commands
 
     record = load_record(path)
@@ -253,7 +253,7 @@ def restore_commands(list_path, stock, host):
     edited = [name for name in packages if name not in states]
     if edited:
         sys.stderr.write(f"not in the record, leaving alone: {', '.join(edited)}\n")
-    commands.append("pm list packages -d")
+    commands.append("pm list packages --user 0 -d")
 
     sys.stderr.write(f"restoring the state recorded on {record.get('created')}: "
                      f"re-enabling {len(re_enable)}, leaving {len(untouched)} as they were.\n")

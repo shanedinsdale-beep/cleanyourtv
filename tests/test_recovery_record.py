@@ -43,9 +43,9 @@ def save():
 
 
 def answer(command):
-    if command == "pm list packages":
+    if command == "pm list packages --user 0":
         return "".join(f"package:{name}\n" for name in state["installed"])
-    if command == "pm list packages -d":
+    if command == "pm list packages --user 0 -d":
         return "".join(f"package:{name}\n" for name in state["disabled"])
     if "resolve-activity" in command:
         return (state["home"] or "") + "\n"
@@ -227,7 +227,7 @@ class RecoveryRecordTest(unittest.TestCase):
         self.assertIn("settings put global window_animation_scale 0.5", sent)
         self.assertIn("settings delete global transition_animation_scale", sent)
         self.assertIn("settings put global animator_duration_scale 3.0", sent)
-        self.assertEqual(sent[-1], "pm list packages -d")
+        self.assertEqual(sent[-1], "pm list packages --user 0 -d")
         self.assertIn("leaving com.example.already_off alone", result.stderr)
 
     def test_restore_without_a_record_says_so_and_falls_back(self):

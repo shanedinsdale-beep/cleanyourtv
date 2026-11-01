@@ -43,5 +43,5 @@ if ($pkgs -contains $setup -and -not $env:FORCE_SETUPWRAITH) {
 & $py -I (Join-Path $repo 'tools\recovery.py') --save $List
 if ($LASTEXITCODE -ne 0) { throw 'no recovery record was written, so nothing was disabled' }
 
-$cmds = @($pkgs | ForEach-Object { "pm disable-user --user 0 $_" }) + 'pm list packages -d'
+$cmds = @($pkgs | ForEach-Object { "pm disable-user --user 0 $_" }) + 'pm list packages --user 0 -d'
 $cmds | & $py -I (Join-Path $repo 'tools\tv.py') --batch

@@ -14,3 +14,8 @@ backup/
 *.aab
 launcher/hs_err_pid*.log
 launcher/replay_pid*.log
+hdmihome/.gradle/
+hdmihome/build/
+hdmihome/app/build/
+hdmihome/local.properties
+!hdmihome/app-release.apk
